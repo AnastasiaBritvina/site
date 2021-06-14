@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static  %}
+    <!-- Bootstrap -->
+    <link href="{% static 'main/css/bootstrap-4.0.0.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+     <div class="container">
+        <a class="navbar-brand" href="/about" style="font-family: 'Dancing Script', cursive">Название</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav justify-content-right">
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">О нас <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacts">Контакты</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/serverses/typesOfServerses">Виды праздников</a>
+                <a class="dropdown-item" href="/serverses/additionalServices">Дополнительные услуги</a>
+              </div>
+            </li>
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Портфолио</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/potfolio/clientsAndPartners">Наши клиенты и партнеры</a>
+                <a class="dropdown-item" href="/potfolio/photosFromEvents">Фото с праздников</a>
+              </div>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/feedback">Отзывы</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/blog">Блог</a>
+            </li>
+          </ul>
+        </div>
+     </div>
+   </nav>
+
+
+{% block content  %}{% endblock %}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'main/js/jquery-3.2.1.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'main/js/popper.min.js' %}"></script>
+    <script src="{% static 'main/js/bootstrap-4.0.0.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "main/layout.html" %}
+{% block title %}Создать аккаунт{% endblock %}
+    {% load static  %}
+
+{% block content  %}
+    <h1>Создать аккаунт</h1>
+    <p>Пожалуйста,заполните форму</p>
+        <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+            <p><input type="submit" value="Create my account"></p>
+        </form>
+{% endblock %}

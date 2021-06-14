@@ -1,0 +1,6 @@
+{% extends "staff/layoutStaff.html" %}
+{% block title %}Заявка клиента{% endblock %}
+    {% load static  %}
+{% block content %}
+    <p>имя: {{ client.nameOfClient}} почта: {{client.emailOfClient}}</p>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "main/layout.html" %}
+    {% block title %}Виды праздников{% endblock %}
+    {% load static  %}
+{% block content  %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/birthday.jpg' %}" alt="Card image birthday">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Дни рождения</h5><br>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-push-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/corp.jpg' %}" alt="Card image corp">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Корпоративные праздники</h5>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-push-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/team.jpg' %}" alt="Card image team">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Тимбилдинги</h5><br>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/prom.jpeg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Выпускные</h5><br>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-push-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/kid.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Праздники для детей</h5><br>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-md-push-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'main/images/serverses/typesOfServerses/wedding.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title; text-center">Свадьбы</h5><br>
+<!--                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "staff/layoutStaff.html" %}
+{% block title %}База клиентов{% endblock %}
+    {% load static  %}
+{% block content %}
+    {% for i in user %}
+        <h5 class="card-title">{{ i.username }}</h5>
+    {% endfor %}
+{% endblock %}
+

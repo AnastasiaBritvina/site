@@ -1,0 +1,10 @@
+{% extends "main/layout.html" %}
+{% block title %}Авторизация{% endblock %}
+    {% load static %}
+{% block content  %}
+    <form action="/update/{{id}}">
+        <label for="kindOfEvent">Изменился тип мероприятия?</label>
+        <input type="text" class="form-control" id="kindOfEvent" name="kindOfEvent" value={{kindOfEvent}}>
+        <button type="submit" class="btn btn-outline-info" style="width: 35%;">Обновить</button>
+    </form>
+{% endblock %}

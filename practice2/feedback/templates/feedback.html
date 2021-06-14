@@ -1,0 +1,27 @@
+{% extends "main/layout.html" %}
+{% block title %}Отзывы{% endblock %}
+    {% load static  %}
+{% block content  %}
+{% for i in feedback %}
+<div class="container">
+    <div class="row text-center" >
+      <div class="col-md-12 pb-1 pb-md-0">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.guest }}</h5>
+                <p class="card-text"> {{ i.body }}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+   </div>
+<br>
+{% endfor %}
+<div class="container">
+        <div class="card-body">
+            <div class="text-center" >
+                <a href="/createFB" class="btn btn-outline-dark my-3 my-sm-0" >Оставить отзыв</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

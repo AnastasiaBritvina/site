@@ -1,0 +1,56 @@
+{% extends "main/layout.html" %}
+{% block title %}Личный кабинет клиента{% endblock %}
+    {% load static  %}
+{% block content %}
+<div class="container">
+
+        <h5 class="text-center">Добро пожаловать, {{ user.username }}</h5>
+        <br>
+
+<!--    <div class="row">-->
+<!--        <div class="col-md-8">-->
+<!--        {% for application in object_list %}-->
+<!--            {% if user.username == application.user %}-->
+<!--            <h6>Имя/наименование клиента {{ application.nameOfClient }}</h6>-->
+<!--            <br>-->
+<!--            <h6>Что нужно организовать {{ application.kindOfEvent }}</h6>-->
+<!--            <br>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--            <h6>Сроки</h6>-->
+<!--            <br>-->
+<!--            <h6>Бюджет</h6>-->
+<!--    </div>-->
+    <div class="row">
+        <div class="col-md-8">
+        {% for i in application %}
+            <h6>Имя/наименование клиента {{ application.nameOfClient }}</h6>
+            <br>
+<!--            <h6>Что нужно организовать {{ INFO.kindOfEvent }}</h6>-->
+<!--            или {{ kindOfEvent }}-->
+            <br>
+        {% endfor %}
+            <h6>Сроки</h6>
+            <br>
+            <h6>Бюджет</h6>
+    </div>
+
+        <div class="col-md-4">
+            <h6>Пожелания по заявке</h6>
+            <br>
+            <h6>Новые пожелания, замечания, уточнения</h6>
+            <br>
+        </div>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <h5 class="text-center">Статус организации мероприятия</h5>
+        <input class="form-control form-control-lg" type="text" placeholder="Этапы организации мероприятия">
+  </div>
+</div>
+</div>
+
+{% endblock %}

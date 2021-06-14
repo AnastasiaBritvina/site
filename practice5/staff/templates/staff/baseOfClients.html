@@ -1,0 +1,16 @@
+{% extends "staff/layoutStaff.html" %}
+{% block title %}База клиентов{% endblock %}
+    {% load static  %}
+{% block content %}
+
+{{ user.username }}
+        {% for i in user %}
+
+
+            <a href="/{{i.id}}" class="btn btn-outline-dark my-3 my-sm-0" type="submit">{{ i.username }}</a>
+<!--    <a href="staff/appOfClient">посмотреть заявку</a>-->
+        {% endfor %}
+
+
+{% endblock %}
+
