@@ -2,25 +2,16 @@
 {% block title %}Заявка клиента{% endblock %}
     {% load static  %}
 {% block content %}
-<div class="container">
-<br>
-    <div class="row">
-        <div class="col-md-8">
-            <h6>Заявка №: {{ id_app }}</h6>
-            <h6>Имя/наименование клиента: {{ nameOfClient }}</h6>
-            <br>
-            <h6>Номер телефона: {{ phoneOfClient }}</h6>
-            <br>
-            <h6>Что нужно организовать: {{ kindOfEvent }}</h6>
-            <br>
-            <h6>Сроки: {{ periodOfPreparation }} </h6>
-            <br>
-            <h6>Бюджет: {{ budgetOfEvent }} </h6>
-        </div>
-        <div class="col-md-4">
-            <a href="#" class="card-link">Посмотреть новые пожелания клиента</a>
-            <br>
-        </div>
+<div class="container"><br>
+    <h6>Заявка №: {{ id_app }}</h6>
+    <h6>Имя/наименование клиента: {{ nameOfClient }}</h6><br>
+    <h6>Номер телефона: {{ phoneOfClient }}</h6><br>
+    <h6>Что нужно организовать: {{ kindOfEvent }}</h6><br>
+    <h6>Сроки: {{ periodOfPreparation }} </h6><br>
+    <h6>Бюджет: {{ budgetOfEvent }} </h6>
+</div>
+
+
         <div class="container">
             <br>
             <br>

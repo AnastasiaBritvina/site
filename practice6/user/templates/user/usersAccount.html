@@ -1,35 +1,20 @@
-{% extends "main/layout.html" %}
+{% extends "user/layoutForClients.html" %}
 {% block title %}Личный кабинет клиента{% endblock %}
     {% load static  %}
 {% block content %}
 <div class="container">
 {% if user.is_authenticated %}
-<div class="row">
-  <div class="col-md-8">
-    <h5 class="text-center">Добро пожаловать, {{ user.username }}</h5>
-  </div>
+<h5 class="text-center">Добро пожаловать, {{ user.username }}</h5>
+    <div class="row">
+    <div class="col-md-8">
+    </div>
   <div class="col-md-4 col-md-push-4">
-    <h5 class="text-right"><a href="{% url 'logout' %}">Выйти</a></h5>
+
   </div>
 </div>
 {% endif %}
-
-<!--    <div class="row">-->
-<!--        <div class="col-md-8">-->
-<!--        {% for application in object_list %}-->
-<!--            {% if user.username == application.user %}-->
-<!--            <h6>Имя/наименование клиента {{ application.nameOfClient }}</h6>-->
-<!--            <br>-->
-<!--            <h6>Что нужно организовать {{ application.kindOfEvent }}</h6>-->
-<!--            <br>-->
-<!--            {% endif %}-->
-<!--        {% endfor %}-->
-<!--            <h6>Сроки</h6>-->
-<!--            <br>-->
-<!--            <h6>Бюджет</h6>-->
-<!--    </div>-->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <h6>Имя/наименование клиента: {{ nameOfClient }}</h6>
             <br>
             <h6>Номер телефона: {{ phoneOfClient }}</h6>
@@ -42,29 +27,22 @@
             <br>
             <h6>Бюджет: {{ budgetOfEvent }} </h6>
             <br>
+        </div>
+        <div class="col-md-6">
             <h6>Место проведения: {{ placeOfEvent }}</h6>
             <br>
             <h6>Количество присутствующих: {{ numberOfGuests }}</h6>
             <br>
             <h6>Средний возраст присутствующих: {{ ageOfGuests }}</h6>
             <br>
-            <h6>Дата и время мероприятия: {{ dateTimeOfEvent }}</h6>
-            <br>
             <h6>Сроки: {{ periodOfPreparation }} </h6>
+            <br>
+            <h6>Доп информация: {{ addInfo }} </h6>
 
     <a href="/edit/{{i.id}}" class="btn btn-outline-info" style="width: 35%;">Редактировать</a>
     </div>
-
-        <div class="col-md-4">
-            <h6>Пожелания по заявке</h6>
-            <br>
-
-            <h6>Новые пожелания, замечания, уточнения</h6>
-
-            <br>
-
-
-        </div>
+    <p>Мероприятие уже прошло? По ссылке ниже Вы можете оставить отзыв</p>
+    <a href="feedback/createFB" class="btn btn-outline-info" style="width: 35%;">Оставить отзыв</a>
 
 
 <div class="container"> <!--Не отображается-->
@@ -74,7 +52,6 @@
     <br>
     <br>
     {% for i in allStatuses %}
-
         <h5 class="text-center">Статус организации мероприятия</h5>
         <h5 class="card-title">{{ i.title }}</h5>
     {% endfor %}

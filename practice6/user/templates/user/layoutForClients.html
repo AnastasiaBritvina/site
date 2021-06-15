@@ -17,7 +17,10 @@
         <span class="navbar-toggler-icon"></span>
         </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav justify-content-right">
+             <div class="container">
+                 <div class="row">
+                    <div class="col-md-9">
+          <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="/about">О нас <span class="sr-only">(current)</span></a>
             </li>
@@ -44,7 +47,16 @@
               <li class="nav-item">
               <a class="nav-link" href="/blog">Блог</a>
             </li>
+            </li>
           </ul>
+          </div>
+        <div class="col-md-3">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+            </li>
+          </ul>
+             </div>
         </div>
      </div>
    </nav>

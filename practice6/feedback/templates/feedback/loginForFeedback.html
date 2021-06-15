@@ -1,0 +1,23 @@
+{% extends "main/layout.html" %}
+{% block title %}Авторизация{% endblock %}
+    {% load static %}
+{% block content  %}
+<div class="container">
+    <br>
+  <div class="row text-center">
+    <div class="col-md-12 pb-1 pb-md-0">
+      <div class="card">
+        <div class="card-body">
+          <h1>Оставить отзыв</h1>
+            <p>Отзывы могут оставлять только наши клиенты. Пожалуйста, войдите, чтобы оставить отзыв</p>
+              <form method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-dark">Войти</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

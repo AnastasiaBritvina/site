@@ -14,17 +14,16 @@ class Consultation(models.Model):
 class Application(models.Model):
     nameOfClient = models.CharField(max_length=300)
     phoneOfClient = models.CharField(max_length=300)
-    kindOfEvent = models.CharField(max_length=300)
-    purposeOfEvent = models.CharField(max_length=300)
+    kindOfEvent = models.TextField()
+    purposeOfEvent = models.TextField()
     dateTimeOfEvent = models.CharField(max_length=300)
     budgetOfEvent = models.CharField(max_length=300)
-    placeOfEvent = models.CharField(max_length=300)
+    placeOfEvent = models.CharField(max_length=1000)
     numberOfGuests = models.CharField(max_length=300)
     ageOfGuests = models.CharField(max_length=300)
     periodOfPreparation = models.TextField()
     addInfo = models.TextField()
     findOut = models.CharField(max_length=300)
-    newInfo = models.TextField(blank=True)
     user = models.ForeignKey(User, related_name = 'user', on_delete = models.CASCADE)
 
     def __str__(self):

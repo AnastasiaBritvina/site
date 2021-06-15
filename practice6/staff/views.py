@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.contrib.auth.models import User
 
-def managersAccount(request):
-    return render(request, 'staff/managersAccount.html')
+# def managersAccount(request):
+#     return render(request, 'staff/managersAccount.html')
 
 class ClientsListView(ListView):
     model = User

@@ -1,0 +1,7 @@
+{% extends "main/layout.html" %}
+{% block title %}Добро пожаловать{% endblock %}
+    {% load static  %}
+{% block content  %}
+    <h1>Добро пожаловать, {{ new_user.first_name }}!</h1>
+    <p>Теперь вы можете войти <a href="{% url 'loginForApp' %}">Вход</a></p>
+{% endblock %}
