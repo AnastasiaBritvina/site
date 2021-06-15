@@ -10,22 +10,6 @@ class FBListView(ListView):
     template_name = 'feedback/feedback.html'
     context_object_name = 'feedback'
 
-# def createFB(request):
-#     error = ''
-#     if request.method == 'POST':
-#         form = FeedbackForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/feedback')
-#         else:
-#             error = "Ошибка валидации"
-#     form = FeedbackForm()
-#     data = {
-#         'form': form,
-#         'error': error
-#     }
-#     return render(request, 'feedback/createFB.html', data)
-
 def createFB(request):
     error = ''
     if request.method == 'POST':
@@ -41,4 +25,3 @@ def createFB(request):
         'error': error
     }
     return render(request, 'feedback/createFB.html', data)
-

@@ -1,54 +1,10 @@
-{% extends "user/layoutForClients.html" %}
-{% block title %}Редактировать{% endblock %}
+{% extends "main/layout.html" %}
+{% block title %}Авторизация{% endblock %}
     {% load static %}
 {% block content  %}
-<div class = "container">
     <form action="/update/{{id}}">
-        <div class="form-group">
-        <label for="nameOfClient">Имя клиента</label>
-        <textarea type="text" class="form-control" id="nameOfClient" name="nameOfClient" value={{nameOfClient}}>{{nameOfClient}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="phoneOfClient">Номер телефона</label>
-        <textarea type="text" class="form-control" id="phoneOfClient" name="phoneOfClient" value={{phoneOfClient}}>{{phoneOfClient}}</textarea>
-        </div>
-        <div class="form-group">
         <label for="kindOfEvent">Изменился тип мероприятия?</label>
-        <textarea type="text" class="form-control" id="kindOfEvent" name="kindOfEvent" value={{kindOfEvent}}>{{kindOfEvent}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="kindOfEvent">Цель мероприятия:</label>
-        <textarea type="text" class="form-control" id="purposeOfEvent" name="purposeOfEvent" value={{purposeOfEvent}}>{{purposeOfEvent}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="kindOfEvent">Дата и время мероприятия:</label>
-        <textarea type="text" class="form-control" id="dateTimeOfEvent" name="dateTimeOfEvent" value={{dateTimeOfEvent}}>{{dateTimeOfEvent}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="budgetOfEvent">Бюджет:</label>
-        <textarea type="text" class="form-control" id="budgetOfEvent" name="budgetOfEvent" value={{budgetOfEvent}}>{{budgetOfEvent}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="placeOfEvent">Место проведения:</label>
-        <textarea type="text" class="form-control" id="placeOfEvent" name="placeOfEvent" value={{placeOfEvent}}>{{placeOfEvent}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="numberOfGuests">Количество присутствующих:</label>
-        <textarea type="text" class="form-control" id="numberOfGuests" name="numberOfGuests" value={{numberOfGuests}}>{{numberOfGuests}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="ageOfGuests">Средний возраст присутствующих:</label>
-        <textarea type="text" class="form-control" id="ageOfGuests" name="ageOfGuests" value={{ageOfGuests}}>{{ageOfGuests}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="periodOfPreparation">Сроки:</label>
-        <textarea type="text" class="form-control" id="periodOfPreparation" name="periodOfPreparation" value={{periodOfPreparation}}>{{periodOfPreparation}}</textarea>
-        </div>
-        <div class="form-group">
-        <label for="addInfo">Доп информация:</label>
-        <textarea type="text" class="form-control" id="addInfo" name="addInfo" value={{addInfo}}>{{addInfo}}</textarea>
-        </div>
+        <input type="text" class="form-control" id="kindOfEvent" name="kindOfEvent" value={{kindOfEvent}}>
         <button type="submit" class="btn btn-outline-info" style="width: 35%;">Обновить</button>
     </form>
-</div>
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "main/layout.html" %}
+{% block title %}Создать аккаунт{% endblock %}
+    {% load static  %}
+
+{% block content  %}
+<div class="container">
+<br>
+    <div class="card">
+      <div class="card-body">
+        <div class="text-center">
+          <h1>Создать аккаунт</h1>
+            <p>Пожалуйста,заполните форму</p>
+        </div>
+       <div class="text-left">
+        <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+            <p><input type="submit" value="Create my account" class="btn btn-outline-dark"></p>
+        </form>
+       </div>
+          <div class="text-center">
+             <p>Уже есть аккаунт? По ссылке ниже Вы можете войти.</p>
+               <a href="/loginForApp" class="btn btn-outline-dark">Войти</a>
+          </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

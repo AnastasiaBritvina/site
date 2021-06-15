@@ -18,11 +18,6 @@ class ProfileActive():
     def __init__(self,user):
         self.user_active = user
 
-class ClientActive():
-    a = 0
-    def __init__(self,client):
-        self.client = client
-
 def accountOfUser(request):
     return render(request, 'user/usersAccount.html')
 
@@ -52,7 +47,7 @@ def user_login_before_app(request):
         form = LoginForm()
         return render(request, 'user/loginForApp.html', {'form': form})
 
-def user_login_before_feedback(request):
+def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -61,32 +56,14 @@ def user_login_before_feedback(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponseRedirect('/feedback/createFB')
+                    return HttpResponseRedirect('/account_view')
                 else:
                     return HttpResponse('Disabled account')
             else:
                 return HttpResponse('Invalid login')
     else:
         form = LoginForm()
-        return render(request, 'feedback/loginForFeedback.html', {'form': form})
-
-# def user_login(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             cd = form.cleaned_data
-#             user = authenticate(username=cd['username'], password=cd['password'])
-#             if user is not None:
-#                 if user.is_active:
-#                     login(request, user)
-#                     return HttpResponseRedirect('/account_view')
-#                 else:
-#                     return HttpResponse('Disabled account')
-#             else:
-#                 return HttpResponse('Invalid login')
-#     else:
-#         form = LoginForm()
-#         return render(request, 'user/login.html', {'form': form})
+        return render(request, 'user/login.html', {'form': form})
 
 def user_login(request): # Получает  id пользователя
     if request.method == 'POST':
@@ -99,7 +76,13 @@ def user_login(request): # Получает  id пользователя
                     login(request, user)
                     if request.user.is_active:
                         current_user = request.user
+                        print(current_user.id)
+
                         ProfileActive.u = int(current_user.id)
+                        print('000000000000000000000000000')
+                        print(ProfileActive.u)
+
+
                     return HttpResponseRedirect('/account_view')
                 else:
                     return HttpResponse('Disabled account')
@@ -140,21 +123,6 @@ def register_before_app(request): # регистрация с занесение
     else:
         user_form = UserRegistrationForm()
     return render(request, 'user/registerForApp.html', {'user_form': user_form})
-
-# def register_before_feedback(request): # регистрация с занесением в группу клиенты
-#     if request.method == 'POST':
-#         user_form = UserRegistrationForm(request.POST)
-#         if user_form.is_valid():
-#             new_user = user_form.save(commit=False)
-#             new_user.set_password(user_form.cleaned_data['password'])
-#             new_user.save()
-#
-#             new_user.groups.add(Group.objects.get(name='clients'))
-#
-#             return render(request, 'feedback/register_for_feedback_done.html', {'new_user': new_user})
-#     else:
-#         user_form = UserRegistrationForm()
-#     return render(request, 'feedback/registerForFeedback.html', {'user_form': user_form})
 
 # def register(request): # старая регистрация
 #     if request.method == 'POST':
@@ -228,6 +196,7 @@ def account_view(request):
             'ageOfGuests': product.ageOfGuests,
             'periodOfPreparation': product.periodOfPreparation,
             'addInfo': product.addInfo,
+            'newInfo': product.newInfo,
             }
             contex = {}
             contex.update(INFO)
@@ -239,71 +208,29 @@ def account_view(request):
 
 
 def appOfClient(request, pk):
-    try:
-        product = Application.objects.get(user=User.objects.get(pk=pk))
-        template = 'staff/appOfClient.html'
-        ClientActive.a = pk
+    product = Application.objects.get(user=User.objects.get(pk=pk))
+    template = 'staff/appOfClient.html'
 
-        INFO = {
-        'id_app': product.id,
-        'nameOfClient': product.nameOfClient,
-        # 'emailOfClient': product.emailOfClient,
-        'kindOfEvent': product.kindOfEvent,
-        'phoneOfClient': product.phoneOfClient,
-        'purposeOfEvent': product.purposeOfEvent,
-        'dateTimeOfEvent': product.dateTimeOfEvent,
-        'budgetOfEvent': product.budgetOfEvent,
-        'placeOfEvent': product.placeOfEvent,
-        'numberOfGuests': product.numberOfGuests,
-        'ageOfGuests': product.ageOfGuests,
-        'periodOfPreparation': product.periodOfPreparation,
-        'addInfo': product.addInfo,
-        }
-        contex = {}
-        contex.update(INFO)
-        return render(request, template, contex)
-    except Application.DoesNotExist:
-        return HttpResponse('Заявка еще не создана')
-
-def edit(request):
-    # obj = Application.objects.get(user=User.objects.get(pk=pk))
-    obj = Application.objects.get(user=User.objects.get(pk=ProfileActive.u))
-    myList = {
-        "nameOfClient": obj.nameOfClient,
-        "phoneOfClient": obj.phoneOfClient,
-        "kindOfEvent": obj.kindOfEvent,
-        "purposeOfEvent": obj.purposeOfEvent,
-        "dateTimeOfEvent": obj.dateTimeOfEvent,
-        "budgetOfEvent": obj.budgetOfEvent,
-        "placeOfEvent": obj.placeOfEvent,
-        "numberOfGuests": obj.numberOfGuests,
-        "ageOfGuests": obj.ageOfGuests,
-        "periodOfPreparation": obj.periodOfPreparation,
-        "addInfo": obj.addInfo,
+    INFO = {
+    'id_app': product.id,
+    'nameOfClient': product.nameOfClient,
+    # 'emailOfClient': product.emailOfClient,
+    'kindOfEvent': product.kindOfEvent,
+    'phoneOfClient': product.phoneOfClient,
+    'purposeOfEvent': product.purposeOfEvent,
+    'dateTimeOfEvent': product.dateTimeOfEvent,
+    'budgetOfEvent': product.budgetOfEvent,
+    'placeOfEvent': product.placeOfEvent,
+    'numberOfGuests': product.numberOfGuests,
+    'ageOfGuests': product.ageOfGuests,
+    'periodOfPreparation': product.periodOfPreparation,
+    'addInfo': product.addInfo,
+    'newInfo': product.newInfo,
     }
-    return render(request,'user/edit.html', context=myList)
+    contex = {}
+    contex.update(INFO)
 
-def update(request):
-    # obj = Application(user=User.objects.get(pk=pk))
-    obj = Application.objects.get(user=User.objects.get(pk=ProfileActive.u))
-    obj.nameOfClient = request.GET['nameOfClient']
-    obj.phoneOfClient = request.GET['phoneOfClient']
-    obj.kindOfEvent = request.GET['kindOfEvent']
-    obj.purposeOfEvent = request.GET['purposeOfEvent']
-    obj.dateTimeOfEvent = request.GET['dateTimeOfEvent']
-    obj.budgetOfEvent = request.GET['budgetOfEvent']
-    obj.placeOfEvent = request.GET['placeOfEvent']
-    obj.numberOfGuests = request.GET['numberOfGuests']
-    obj.ageOfGuests = request.GET['ageOfGuests']
-    obj.periodOfPreparation = request.GET['periodOfPreparation']
-    obj.addInfo = request.GET['addInfo']
-    import datetime
-    updated_at = datetime.datetime.now()
-    obj.created_et = updated_at
-    obj.save()
-    myList = {"allApps": Application.objects.all()
-              }
-    return render(request, 'user/update.html', context=myList)
+    return render(request, template, contex)
 
 # class LookAppOfClient(ListView):
 #     template = 'staff/appOfClient.html'
@@ -346,20 +273,54 @@ def addStatus(request):
     obj = Status()
     # product = Application.objects.get(user=User.objects.get(pk=pk))
     obj.title = request.GET['title']
-    obj.application = Application.objects.get(user=User.objects.get(pk=ClientActive.a))
+    obj.application = Application.objects.get(user=User.objects.get(pk=13))
     obj.save()
     myList = {'allStatuses': Status.objects.all(),
               }
     return render(request, template, context=myList)
 
+def edit(request):
+    obj = Application.objects.get(user=User.objects.get(pk=13))
+    myList = {
+        "nameOfClient": obj.nameOfClient,
+        "phoneOfClient": obj.phoneOfClient,
+        "kindOfEvent": obj.kindOfEvent,
+        "purposeOfEvent": obj.purposeOfEvent,
+        "dateTimeOfEvent": obj.dateTimeOfEvent,
+        "budgetOfEvent": obj.budgetOfEvent,
+        "placeOfEvent": obj.placeOfEvent,
+        "numberOfGuests": obj.numberOfGuests,
+        "ageOfGuests": obj.ageOfGuests,
+        "periodOfPreparation": obj.periodOfPreparation,
+        "addInfo": obj.addInfo,
+    }
+    return render(request,'user/edit.html', context=myList)
 
+def update(request):
+    obj = Application(user=User.objects.get(pk=13))
+    obj.nameOfClient = request.GET['nameOfClient']
+    obj.phoneOfClient = request.GET['phoneOfClient']
+    obj.kindOfEvent = request.GET['kindOfEvent']
+    obj.purposeOfEvent = request.GET['purposeOfEvent']
+    obj.dateTimeOfEvent = request.GET['dateTimeOfEvent']
+    obj.budgetOfEvent = request.GET['budgetOfEvent']
+    obj.placeOfEvent = request.GET['placeOfEvent']
+    obj.numberOfGuests = request.GET['numberOfGuests']
+    obj.ageOfGuests = request.GET['ageOfGuests']
+    obj.periodOfPreparation = request.GET['periodOfPreparation']
+    obj.addInfo = request.GET['addInfo']
+    import datetime
+    updated_at = datetime.datetime.now()
+    obj.created_et = updated_at
+    obj.save()
+    myList = {"allApps": Application.objects.all()
+              }
+    return render(request, 'user/edit.html', context=myList)
 
 # def list(request):
-#     if Status.application == ProfileActive.u:
-#         myList = {"allStatuses": Status.objects.all()
-#                 }
-#         return render(request, 'user/usersAccount.html', context=myList)
-
+#     myList = {"allStatuses": Status.objects.all()
+#               }
+#     return render(request, 'user/usersAccount.html', context=myList)
 
 
 

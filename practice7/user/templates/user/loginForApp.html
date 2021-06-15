@@ -1,0 +1,25 @@
+{% extends "main/layout.html" %}
+{% block title %}Авторизация{% endblock %}
+    {% load static %}
+{% block content  %}
+<div class="container">
+    <br>
+  <div class="row text-center">
+    <div class="col-md-12 pb-1 pb-md-0">
+      <div class="card">
+        <div class="card-body">
+          <h1>Оставить заявку</h1>
+            <p>Чтобы оставить заявку, нужно войти</p>
+              <form method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-dark">Войти</button>
+              </form>
+          <p>Еще нет аккаунта? По ссылке ниже Вы можете зарегистрироваться.</p>
+              <a href="/registerForApp" class="btn btn-outline-dark" >Зарегистрироваться</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "main/layout.html" %}
+    {% block title %}Блог{% endblock %}
+    {% load static  %}
+{% block content  %}
+{% for i in blog %}
+<div class="container">
+    <div class="row text-center" >
+      <div class="col-md-12 pb-1 pb-md-0">
+        <div class="card">
+          <div class="card-body">
+            {% if i.blogPhoto %}
+            <img class="card-img-top" src="{{MEDIA_URL}}{{ i.blogPhoto.url }}" alt="successfulEvent">
+            {% endif %}
+            <hr>
+              <h5 class="card-title">{{ i.blogTitle }}</h5>
+            <p class="card-text">{{ i.blogBody }}</p>
+            <div class="text-right">
+              <a href="/blog/{{i.id}}" class="btn btn-outline-dark my-3 my-sm-0" type="submit">Читать далее...</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+<br>
+{% endfor %}
+  {% block pagination %}
+    {% if is_paginated %}
+      <div class="container">
+        <div class="pagination">
+          <span class="page-links">
+            {% if page_obj.has_previous %}
+              <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">вернуться к предыдущим новостям</a>
+            {% endif %}
+            <span class="page-current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} .
+            </span>
+            {% if page_obj.has_next %}
+              <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">перейти к следующей странице новостей</a>
+            {% endif %}
+          </span>
+        </div>
+        </div>
+    {% endif %}
+  {% endblock %}
+{% endblock %}

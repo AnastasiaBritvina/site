@@ -1,0 +1,15 @@
+{% extends "staff/layoutStaff.html" %}
+{% block title %}База клиентов{% endblock %}
+    {% load static  %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        {% for i in user %}
+            <a href="/appOfClient/{{i.id}}" class="card-link" type="submit">{{ i.username }}</a>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+

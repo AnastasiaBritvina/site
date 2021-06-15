@@ -1,0 +1,97 @@
+{% extends "main/layout.html" %}
+{% block title %}Отзывы{% endblock %}
+    {% load static  %}
+{% block content  %}
+{% for i in feedback %}
+<div class="container">
+    <div class="row text-center" >
+      <div class="col-md-12 pb-1 pb-md-0">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.guest }}</h5>
+                <p class="card-text"> {{ i.body }}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+   </div>
+<br>
+{% endfor %}
+<div class="container">
+        <div class="card-body">
+            <div class="text-center" >
+                <a href="/loginForFeedback" class="btn btn-outline-dark my-3 my-sm-0" >Оставить отзыв</a>
+            </div>
+        </div>
+    </div>
+{% block pagination %}
+    {% if is_paginated %}
+      <div class="container">
+        <div class="pagination">
+          <span class="page-links">
+            {% if page_obj.has_previous %}
+              <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">вернуться к предыдущим отзывам</a>
+            {% endif %}
+            <span class="page-current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} .
+            </span>
+            {% if page_obj.has_next %}
+              <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">перейти к следующей странице отзывов</a>
+            {% endif %}
+          </span>
+        </div>
+        </div>
+    {% endif %}
+  {% endblock %}
+<div class="container">
+   <div class="card">
+      <div class="card-body">
+    <h2 class="card-title; text-center">БЛАГОДАРНОСТИ КОМПАНИЙ</h2>
+        <div class="row">
+            <div class="col-12">
+                <div id="carouselExampleControlsNoTouching" class="carousel slide" data-touch="false" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img src="{% static 'main/images/feedback/1.PNG' %}" class="d-block w-100" alt="First slide">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <img src="{% static 'main/images/feedback/2.PNG' %}" class="d-block w-100" alt="First slide">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <img src="{% static 'main/images/feedback/3.PNG' %}" class="d-block w-100" alt="First slide">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <img src="{% static 'main/images/feedback/4.PNG' %}" class="d-block w-100" alt="First slide">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                <a class="carousel-control-prev" href="#carouselExampleControlsNoTouching" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControlsNoTouching" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

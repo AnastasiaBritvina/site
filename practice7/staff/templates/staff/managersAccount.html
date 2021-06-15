@@ -1,0 +1,11 @@
+{% extends "staff/layoutStaff.html" %}
+{% block title %}Личный кабинет менеджера по работе с клиентами{% endblock %}
+    {% load static  %}
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+        <h5 class="text-center">Добро пожаловать, {{ user.username }}</h5>
+    {% endif %}
+   <a class="nav-link" href="/baseOfClients">Перейти к базе клиентов</a>
+</div>
+{% endblock %}
